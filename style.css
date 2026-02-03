@@ -679,35 +679,36 @@ body {
 
 
 
+/* ===== Section ===== */
 .tech-slider-section {
-  padding: 90px 20px;
-  background-color: #020617;
-  color: #ffffff;
+  padding: 60px 0;
+  background: #fff;
   overflow: hidden;
 }
 
+/* ===== Title ===== */
 .tech-title {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 50px;
-  color: rgb(34, 211, 238);
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: 700;
 }
 
-/* Slider Container */
+/* ===== Slider Wrapper ===== */
 .tech-slider {
   width: 100%;
   overflow: hidden;
 }
 
-/* Moving Track */
+/* ===== Moving Track ===== */
 .tech-track {
   display: flex;
+  gap: 40px;
   width: max-content;
-  gap: 50px;
-  animation: techSlide 30s linear infinite;
+  animation: techSlide 20s linear infinite;
 }
 
-/* Individual Item */
+/* ===== Each Icon ===== */
 .tech-item {
   min-width: 120px;
   display: flex;
@@ -715,20 +716,18 @@ body {
   justify-content: center;
 }
 
-.tech-item img {
-  width: 80px;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+/* ===== Icon Size ===== */
+.tech-item i {
+  font-size: 60px;
+  transition: transform 0.3s ease;
 }
 
-.tech-item img:hover {
-  transform: scale(1.15);
-  filter: grayscale(0);
-  opacity: 1;
+/* ===== Hover Effect ===== */
+.tech-item i:hover {
+  transform: scale(1.2);
 }
 
-/* Animation */
+/* ===== Continuous Animation ===== */
 @keyframes techSlide {
   0% {
     transform: translateX(0);
@@ -737,6 +736,7 @@ body {
     transform: translateX(-50%);
   }
 }
+
 
 /* 768px Media Query */
 @media (max-width: 768px) {
