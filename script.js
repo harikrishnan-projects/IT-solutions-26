@@ -1,12 +1,13 @@
 // hamburger menu js code //
 
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  hamburger.classList.toggle('open'); // optional for animation
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
 });
+
 
 
 

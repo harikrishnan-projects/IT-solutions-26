@@ -9,6 +9,17 @@
 body {
   background: #fff;
   overflow-x: hidden; /* prevent horizontal scroll */
+
+}
+
+/* Lock entire page when menu is open */
+body.menu-open {
+  height: 100vh;
+  overflow: hidden;
+}
+
+section{
+  overflow-x: hidden;
 }
 
 /* ===== NAVBAR ===== */
@@ -45,6 +56,8 @@ body {
   list-style: none;
   display: flex;
   gap: 28px;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links li a {
@@ -84,43 +97,59 @@ body {
 
 /* ===== MOBILE NAV ===== */
 @media (max-width: 768px) {
-  .nav-links {
-    position: fixed; /* covers screen */
+
+  /* FIX NAVBAR */
+  .navbar {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 70px;
+    z-index: 1001;
+  }
+
+  /* MOBILE MENU */
+  .nav-links {
+    position: fixed;
+    top: 70px; /* below navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
     background: #020617;
+
+    display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* center vertically */
-    gap: 30px;
-    padding: 0;
-    margin: 0;
-    display: none;
-    transition: all 0.3s ease;
-    z-index: 1000; /* below hamburger */
+    justify-content: center;
+
+    gap: 26px;
+    z-index: 1000;
   }
 
   .nav-links.active {
     display: flex;
   }
 
+  /* REMOVE NEGATIVE MARGINS */
+  .nav-links li a,
+  .nav-links .mobile-btn {
+    margin-left: 0;
+    font-size: 18px;
+  }
+
+  /* HAMBURGER */
   .hamburger {
     display: block;
+    position: relative;
+    z-index: 1002;
   }
 
   .nav-right .cta {
     display: none;
   }
-
-  .hamburger {
-    display: block;
-  }
 }
 
-/* ===== HAMBURGER TOGGLE JS ===== */
-/* In HTML/JS, add/remove 'active' class on nav-links */
+
 
 
 
@@ -1413,7 +1442,7 @@ body {
 
 .footer {
   position: relative;
-  background-image: url('./dev.webp'); /* your image path */
+  background-image: url('./business.webp'); /* your image path */
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -1444,10 +1473,87 @@ body {
 
 /* Footer content styles remain the same */
 .footer-box { line-height: 1.8; }
-.footer-title { font-size: 18px; margin-bottom: 15px; color: #38bdf8; }
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* ICON BASE */
+.social-icon {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(34, 211, 238);
+  border: 1.5px solid rgb(34, 211, 238);
+  font-size: 18px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ICON HOVER */
+.social-icon:hover {
+  background: rgb(34, 211, 238);
+  color: #000;
+}
+
+/* SOUND WAVE EFFECT */
+.social-icon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.4);
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* WAVE ANIMATION */
+.social-icon:hover::before {
+  animation: wave 0.8s ease-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.footer-title { font-size: 18px; margin-bottom: 15px; color: rgb(34, 211, 238); }
 .footer-text { font-size: 14px; color: #cbd5e1; }
 .footer-list { list-style: none; padding: 0; }
 .footer-list li { margin-bottom: 8px; font-size: 14px; color: #cbd5e1; }
 .footer-list a { text-decoration: none; color: #cbd5e1; transition: color 0.3s; }
-.footer-list a:hover { color: #38bdf8; }
+.footer-list a:hover { color: rgb(34, 211, 238); }
 .footer-bottom { text-align: center; margin-top: 40px; border-top: 1px solid #1e293b; padding-top: 15px; font-size: 13px; color: #94a3b8; }
+@media (max-width: 768px) {
+
+  .social-icons {
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    border-width: 1.2px;
+  }
+
+  /* .bx{
+    margin-left: 100px;
+  } */
+
+}
